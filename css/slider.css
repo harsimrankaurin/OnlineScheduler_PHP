@@ -1,0 +1,69 @@
+.ms-s1 {
+  margin: 8px 35%;
+  width: 270px;
+  height: 250px;
+  position: relative;
+  perspective: 1000px;
+}
+.carousel {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.item {
+  display: block;
+  position: absolute;
+  background: #000;
+  width: 270px;
+  height: 200px;
+  line-height: 200px;
+  font-size: 5em;
+  text-align: center;
+  color: #FFF;
+  opacity: 0.95;
+  border-radius: 10px;
+}
+
+.a {
+  transform: rotateY(0deg) translateZ(250px);
+  background: #ed1c24;
+}
+.b {
+  transform: rotateY(60deg) translateZ(250px);
+  background: #0072bc;
+}
+.c {
+  transform: rotateY(120deg) translateZ(250px);
+  background: #39b54a;
+}
+.d {
+  transform: rotateY(180deg) translateZ(250px);
+  background: #f26522;
+}
+.e {
+  transform: rotateY(240deg) translateZ(250px);
+  background: #630460;
+} 
+.f {
+  transform: rotateY(300deg) translateZ(250px);
+  background: #8c6239;
+}
+
+.next:active, .prev:active,
+.next, .prev {
+  position:relative;
+  display: inline-block;
+  top: 150px;
+  left: 120px;
+  right: 5em;
+  margin: 0 0;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+.next:active, .next {
+	left:43em;
+}

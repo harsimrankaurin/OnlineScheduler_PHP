@@ -9,7 +9,9 @@ $row = mysql_fetch_assoc($gdata);
 $fname = $row["Uid"];
 $lname = $row["Uname"];
 $email = $row["Uemail"];
+$subj = $_GET["subj"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +81,7 @@ $email = $row["Uemail"];
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg h6 text-white sticky-top scrolling-navbar stylish-color-dark" id="mainNav" style="font-family:Gill Sans MT">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/1.png" width="150px" height="50px"></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/logo.png" width="250px" height="60px"></a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -87,18 +89,11 @@ $email = $row["Uemail"];
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 			<li class="nav-item dropdown" style="margin: 0 0 0 30px;">
-                <a class="nav-link" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false" href="index.php" style="color: #FFFFFF;"><b>Home</b></a>
+                <a class="nav-link" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false" href="home.php" style="color: #FFFFFF;"><b>Home</b></a>
                 <div class="dropdown-primary animated bounceIn" aria-labelledby="navbarDropdownMenuLink">
                 </div>
             </li>
-            <li class="nav-item dropdown" style="margin: 0 0 0 30px;">
-                <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Login</b></a>
-                <div class="dropdown-menu dropdown-primary animated bounceIn" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" data-toggle="modal" data-target="#mss2" >Admin Login</a>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#mss3">Student Login</a>
-                </div>
-            </li>
-			
+
 			<li class="nav-item dropdown" style="margin: 0 0 0 30px;">
                 <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exam Details</a>
                 <div class="dropdown-menu dropdown-primary animated bounceIn" aria-labelledby="navbarDropdownMenuLink">
@@ -152,6 +147,7 @@ $email = $row["Uemail"];
                     <tr>
                         <th class="th-lg"><a>Serial No. <i class="fa fa-sort ml-1"></i></a></th>
                         <th class="th-lg"><a href="">Name<i class="fa fa-sort ml-1"></i></a></th>
+						<th class="th-lg"><a href="">Subject<i class="fa fa-sort ml-1"></i></a></th>
                         <th class="th-lg"><a href="">Correct Questions<i class="fa fa-sort ml-1"></i></a></th>
                         <th class="th-lg"><a href="">Incorrect Questions<i class="fa fa-sort ml-1"></i></a></th>
                         <th class="th-lg"><a href="">Total Questions<i class="fa fa-sort ml-1"></i></a></th>
@@ -169,6 +165,7 @@ $email = $row["Uemail"];
                     <tr>
                         <td><?php echo $row["id"]; ?></td>
                         <td><?php echo $row["name"]; ?></td>
+						<td><?php echo $subj ?></td>
                         <td><?php echo $row["correct_ques"]; ?></td>
                         <td><?php echo $row["wrong_ques"]; ?></td>
                         <td><?php echo $row["total_ques"]; ?></td>
@@ -194,7 +191,7 @@ $email = $row["Uemail"];
 
             <!--First column-->
             <div class="col-md-4">
-				<img class="img" src="img/1.png" width="180px" height="60px"><br><hr>
+				<img class="img" src="img/logo.png" width="250px" height="60px"><br><hr>
                 <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Online examination Portal</h5>
                 <p>This portal provides expertised certficiation courses for various programming languages in order to increase knowledge level.</p>
             </div>
@@ -203,29 +200,6 @@ $email = $row["Uemail"];
             <hr class="clearfix w-100 d-md-none">
 
             <hr class="clearfix w-100 d-md-none">
-
-            <!--Fourth column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="subjects.html">Subjects</a><br><br>
-                    </li>
-                    <li>
-                        <a href="testimonials.html">Testimonials</a><br><br>
-                    </li>
-                    <li>
-                        <a href="instruction.html">Instructions</a><br><br>
-                    </li>
-                    <li>
-                        <a href="ourteam.html">Our Team</a><br><br>
-                    </li>
-					<li>
-                        <a href="books.html">Book Details</a><br><br>
-                    </li>
-                </ul>
-            </div>
-            <!--/.Fourth column-->
         </div>
     </div>
     <!--/.Footer Links-->

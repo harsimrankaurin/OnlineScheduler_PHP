@@ -73,26 +73,13 @@ $email = $row["Uemail"];
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg h6 text-white sticky-top scrolling-navbar" id="mainNav" style="font-family:Gill Sans MT">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/1.png" width="150px" height="50px"></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/logo.png" width="250px" height="60px"></a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-		  <li class="nav-item dropdown" style="margin: 0 0 0 30px;">
-                <a class="nav-link" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false" href="index.php" style="color: #FFFFFF;"><b>Home</b></a>
-                <div class="dropdown-primary animated bounceIn" aria-labelledby="navbarDropdownMenuLink">
-                </div>
-            </li>
-            <li class="nav-item dropdown" style="margin: 0 0 0 30px;">
-                <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Login</b></a>
-                <div class="dropdown-menu dropdown-primary animated bounceIn" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" data-toggle="modal" data-target="#mss2" >Admin Login</a>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#mss3">Student Login</a>
-                </div>
-            </li>
-			
 			<li class="nav-item dropdown" style="margin: 0 0 0 30px;">
                 <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exam Details</a>
                 <div class="dropdown-menu dropdown-primary animated bounceIn" aria-labelledby="navbarDropdownMenuLink">
@@ -126,7 +113,7 @@ $email = $row["Uemail"];
 <div class="text-center ">
 
     <!--Title-->
-    <h1 class="card-title h1-responsive font-bold mt-3"><strong>Welcome, <?php echo $fname;?> <?php echo $lname; ?>	To Online Scheduler</strong></h1>
+    <h1 class="card-title h1-responsive font-bold mt-3"><strong>Welcome, <?php echo $fname;?> <?php echo $lname; ?>	to E-Exam Generator</strong></h1>
     <!--Subtitle-->
     <p class="pt-2 font-bold indigo-text"><strong><?php echo $email; ?> </strong></p>
 
@@ -137,9 +124,11 @@ $email = $row["Uemail"];
     </div>
 
     <hr class="my-4 pb-2">
-    ;
-    <a href="test.php" class="btn peach-gradient btn-rounded"><strong>Start Test<i class="fa fa-diamond ml-1"></i><strong></a>
-    <a href="results.php" class="btn purple-gradient btn-rounded"><strong>Test Results<i class="fa fa-download ml-1"></i><strong></a>
+    <a href="register.php" class="btn peach-gradient btn-rounded"><strong>Begin Exam <i class="fa fa-diamond ml-1"></i><strong></a>
+    <a href="results.php" class="btn purple-gradient btn-rounded"><strong>Test Results <i class="fa fa-download ml-1"></i><strong></a>
+	<a href="index.php" class="btn blue-gradient btn-rounded"><strong>Sign Out &nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i><strong></a>
+	
+	
 
 </div>
 <!--Jumbotron-->
@@ -153,7 +142,7 @@ $email = $row["Uemail"];
 
             <!--First column-->
             <div class="col-md-4">
-				<img class="img" src="img/1.png" width="180px" height="60px"><br><hr>
+				<img class="img" src="img/logo.png" width="250px" height="60px"><br><hr>
                 <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Online examination Portal</h5>
                 <p>This portal provides expertised certficiation courses for various programming languages in order to increase knowledge level.</p>
             </div>
@@ -188,6 +177,18 @@ $email = $row["Uemail"];
         </div>
     </div>
     <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Call to action-->
+    <div class="text-center py-3">
+        <ul class="list-unstyled list-inline mb-0">
+               <li class="list-inline-item">
+				<a href="index.php" class="btn btn-danger btn-rounded" >Sign Out &nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+    <!--/.Call to action-->
 
     <hr>
 

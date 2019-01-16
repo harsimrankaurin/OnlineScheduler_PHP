@@ -1,0 +1,46 @@
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 300px;
+  }
+}
+@media (min-width: 400px) and (max-width: 450px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 400px;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #39448c !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #39448c !important;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #39448c !important;
+  }
+}
+
+h6 {
+  line-height: 1.0;
+}

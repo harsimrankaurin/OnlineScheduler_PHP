@@ -9,10 +9,11 @@ $row = mysql_fetch_assoc($gdata);
 $fname = $row["Uid"];
 $lname = $row["Uname"];
 $email = $row["Uemail"];
+$subj = $_GET["subj"];
 ?>
 <?php
 if(isset($_POST["test_sub"])) {
-	$checkans = mysql_query("SELECT * FROM exam");
+	$checkans = mysql_query("SELECT * FROM paper WHERE subject = '$subj'");
 	$correct_questions=0;
 	$wrong_questions=0;
 	$total_questions=0;
@@ -105,7 +106,7 @@ if(isset($_POST["test_sub"])) {
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg h6 text-white sticky-top scrolling-navbar" id="mainNav" style="font-family:Gill Sans MT">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/1.png" width="150px" height="50px"></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/logo.png" width="250px" height="60px"></a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -159,30 +160,30 @@ if(isset($_POST["test_sub"])) {
 <H1> MULTIPLE CHOICE QUESTIONS </H1>
 <?php
 $i=1;
-$sques = mysql_query("SELECT * FROM exam");
+$sques = mysql_query("SELECT * FROM paper WHERE subject = '$subj'");
 if(mysql_num_rows($sques) > 0) { 
 	while($row = mysql_fetch_assoc($sques)) {
 ?>	
 	<i class="fa fa-check-square-o" aria-hidden="true"></i>
-	<label>Question <?php echo $row["id"]; ?> : <?php echo $row["ques"]; ?></label><br>
+	<label>Question <?php echo $row["qno"]; ?> : <?php echo $row["txt"]; ?></label><br>
     <div class="form-check ml-4">
-        <input class="form-check-input" name="<?php echo $row["id"]; ?>" type="radio" id="<?php echo $i; ?>" value="1">
-        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["mca"]; ?></label>
+        <input class="form-check-input" name="<?php echo $row["qno"]; ?>" type="radio" id="<?php echo $i; ?>" value="1">
+        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["ch1"]; ?></label>
     </div>
 		<?php $i++; ?>
     <div class="form-check ml-4">
-        <input class="form-check-input" name="<?php echo $row["id"]; ?>" type="radio" id="<?php echo $i; ?>" value="2">
-        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["mcb"]; ?></label>
+        <input class="form-check-input" name="<?php echo $row["qno"]; ?>" type="radio" id="<?php echo $i; ?>" value="2">
+        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["ch2"]; ?></label>
     </div>
 		<?php $i++; ?>
     <div class="form-check ml-4">
-        <input class="form-check-input" name="<?php echo $row["id"]; ?>" type="radio" id="<?php echo $i; ?>" value="3">
-        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["mcc"]; ?></label>
+        <input class="form-check-input" name="<?php echo $row["qno"]; ?>" type="radio" id="<?php echo $i; ?>" value="3">
+        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["ch3"]; ?></label>
     </div>
 		<?php $i++; ?>
 		<div class="form-check ml-4">
-        <input class="form-check-input" name="<?php echo $row["id"]; ?>" type="radio" id="<?php echo $i; ?>" value="4">
-        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["mcd"]; ?></label>
+        <input class="form-check-input" name="<?php echo $row["qno"]; ?>" type="radio" id="<?php echo $i; ?>" value="4">
+        <label class="form-check-label" for="<?php echo $i; ?>"><?php echo $row["ch4"]; ?></label>
     </div><br>
 		<?php $i++; ?>
      
@@ -245,7 +246,7 @@ if(mysql_num_rows($sques) > 0) {
 
             <!--First column-->
             <div class="col-md-4">
-				<img class="img" src="img/1.png" width="180px" height="60px"><br><hr>
+				<img class="img" src="img/logo.png" width="250px" height="60px"><br><hr>
                 <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Online examination Portal</h5>
                 <p>This portal provides expertised certficiation courses for various programming languages in order to increase knowledge level.</p>
             </div>

@@ -44,7 +44,53 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
     echo "All fields are required!";  
 }  
 } }  
-	?>
+
+	if(isset($_POST["signup_9"])) {
+		$o1 = $_POST["up11"];
+		$o2 = $_POST["up22"];
+		$o3 = $_POST["up33"];
+		$o4 = $_POST["up44"];
+		$o5 = $_POST["up55"];
+		$o6 = $_POST["up66"];
+	$signup = "INSERT INTO admin (aid,aname,aemail,apsd,agender,aaddress) VALUES ('$o1','$o2','$o3','$o4','$o5','$o6')";
+	if(mysql_query($signup)) {
+		$a=1;
+	} else {
+		$b=1;
+	}
+	}
+	
+	if(isset($_POST["login_1"])){  
+
+if(!empty($_POST['in11']) && !empty($_POST['in22'])) {  
+    $user=$_POST['in11'];  
+    $pass=$_POST['in22'];  
+    $signin=mysql_query("SELECT * FROM admin WHERE aemail='".$user."' AND apsd='".$pass."'");  
+    $numrows=mysql_num_rows($signin);  
+    if($numrows!=0)  
+    {  
+    while($row=mysql_fetch_assoc($signin))  
+    {  
+    $dbusername=$row['aemail'];  
+    $dbpassword=$row['apsd'];  
+    }  
+  
+    if($user == $dbusername && $pass == $dbpassword)  
+    {
+		// SESSION START
+		session_start();
+		$_SESSION['email_tmp']=$user;
+		header('location: admin_home.php');
+    } else {
+		$c=1;
+    echo "Invalid username or password!";  }  } 
+    else {
+		$c=1;
+    echo "All fields are required!";  
+}  
+} }  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,7 +152,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg h6 text-white fixed-top scrolling-navbar" id="mainNav" style="font-family:Gill Sans MT">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/1.png" width="150px" height="50px"></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img" src="img/logo.png" width="250px" height="60px"></a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -148,7 +194,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
         </div>
       </div>
     </nav>
-<!--/.Navbar-->
+<!--/.Navigation-->
     <!--Carousel Wrapper-->
     <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
@@ -173,14 +219,14 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
               <!-- Content -->
               <div class="text-center white-text mx-5 wow fadeIn">
                 <h1 class="mb-4">
-                  <strong>Welcome to Exam Scheduler</strong>
+                  <strong>Welcome to E-Exam Generator</strong>
                 </h1>
 
                 <p>
                   <strong>Provides various certification courses online to level up the knowledge in the field of Computer Science</strong>
                 </p>
 
-                  <a target="_blank" href="#" class="btn btn-outline-white btn-lg">Get Started!
+                  <a target="_blank" href="instruction.html" class="btn btn-outline-white btn-lg">Get Started!
                   <i class="fa fa-graduation-cap ml-2"></i>
                 </a>
               </div>
@@ -203,7 +249,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
               <!-- Content -->
               <div class="text-center white-text mx-5 wow fadeIn">
                 <h1 class="mb-4">
-                  <strong>Welcome to Exam Scheduler</strong>
+                  <strong>Welcome to E-Exam Generator</strong>
                 </h1>
 
                 <p>
@@ -232,7 +278,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
               <!-- Content -->
               <div class="text-center white-text mx-5 wow fadeIn">
                 <h1 class="mb-4">
-                  <strong>Welcome to Exam Scheduler</strong>
+                  <strong>Welcome to E-Exam Generator</strong>
                 </h1>
 
                 <p>
@@ -319,11 +365,13 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
 </div></div>
 
 <br>
+<div class="comment_me">
 <div class="card container" style="position:relative;top:40px">
     <div class="row">
         <div class="comments col-md-9" id="comments">
             <h3 class="mb-2">Comments</h3>
-            <!-- comment -->
+			
+<!-- comment -->
             <div class="comment mb-2 row">
                 <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
                     <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/m103.jpg" alt="avatar"></a>
@@ -358,14 +406,12 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
                </div>
                <!-- /reply is indented -->
             </div>
-            <!-- /comment -->
-            <!-- comment -->
             <div class="comment mb-2 row">
                 <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
                     <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/w102.jpg" alt="avatar"></a>
                 </div>
                 <div class="comment-content col-md-11 col-sm-10">
-                    <h6 class="small comment-meta"><a href="#">maslarino</a> Yesterday, 5:03 PM</h6>
+                    <h6 class="small comment-meta"><a href="#"> Simran</a> Yesterday, 5:03 PM</h6>
                     <div class="comment-body">
                         <p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
                             <br>
@@ -373,8 +419,8 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
                         </p>
                     </div>
                 </div>
-            </div>
-            <!-- /comment -->
+
+<!-- /comment -->
             <div class="row pt-2">
                 <div class="col-12">
                     <a href="" class="btn btn-sm btn-primary">Comment</a>
@@ -384,7 +430,12 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
         </div>
     </div>
 </div>
+</div>
+<!--comment table-->
+
+<!--/comment table-->
 	<!--Modal: Login / Register Form-->
+
 <div class="modal fade" id="mss" tabindex="-1" role="dialog" aria-labelledby="mss" aria-hidden="true">
     <div class="modal-dialog cascading-modal " role="document">
         <!--Content-->
@@ -464,10 +515,9 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
     </div>
 </div>
 <!--Modal: Login / Register Form-->
-  
- <!--Modal: Login / Register Form-->
+  <!--admin login-->
 <div class="modal fade" id="mss2" tabindex="-1" role="dialog" aria-labelledby="mss2" aria-hidden="true">
-    <div class="modal-dialog cascading-modal" role="document">
+    <div class="modal-dialog cascading-modal " role="document">
         <!--Content-->
         <div class="modal-content">
 
@@ -475,83 +525,102 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
             <div class="modal-c-tabs">
 
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+                <ul class="nav nav-tabs tabs-2 blue-gradient" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i>Admin Login</a>
+                        <a class="nav-link active" data-toggle="tab" href="#panel91" role="tab"><i class="fa fa-user mr-1"></i>Admin Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#panel99" role="tab"><i class="fa fa-user-plus mr-1"></i>Admin Register</a>
                     </li>
                 </ul>
 
                 <!-- Tab panels -->
                 <div class="tab-content">
-                    <!--Panel 7-->
-                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
+                    <!--Panel 9-->
+                    <div class="tab-pane fade in show active" id="panel91" role="tabpanel">
+										<form method="post" data-ajax="false">
                         <!--Body-->
                         <div class="modal-body mb-1">
                             <div class="md-form form-sm mb-5">
                                 <i class="fa fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                                <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
+                                <input type="email" class="form-control form-control-sm" name="in11" required>
+                                <label data-error="wrong" data-success="right">Your email / Username</label>
                             </div>
 
                             <div class="md-form form-sm mb-4">
                                 <i class="fa fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
+                                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate" name="in22" required>
                                 <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
                             </div>
                             <div class="text-center mt-2">
-                                <button class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
+                                <button class="btn btn-info" name="login_1">Log in <i class="fa fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-center text-md-right mt-1">
-                                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
-                                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                                <p>Not a member? <a data-toggle="tab" href="#panel99" role="tab" class="blue-text">Sign Up</a></p>
                             </div>
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                         </div>
 
-                    </div>
-                    <!--/.Panel 7-->
+                    </div></form>
+                    <!--/.Panel 9-->
 
-                    <!--Panel 8-->
-                    <div class="tab-pane fade" id="panel8" role="tabpanel">
-
+                    <!--Panel 10-->
+                    <div class="tab-pane fade" id="panel99" role="tabpanel">
+										<form method="post">
                         <!--Body-->
                         <div class="modal-body">
+														<div class="md-form form-sm mb-5">
+                                <i class="fa fa-user prefix" ></i>
+                                <input type="text" name="up11" class="form-control form-control-sm validate" required>
+                                <label data-error="wrong" data-success="right" > First Name</label>
+                            </div>
+														<div class="md-form form-sm mb-5">
+                                <i class="fa fa-user prefix" ></i>
+                                <input type="text" name="up22" class="form-control form-control-sm validate" required>
+                                <label data-error="wrong" data-success="right" >Last Name</label>
+                            </div>
+														
                             <div class="md-form form-sm mb-5">
                                 <i class="fa fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
+                                <input type="email"  name="up33" id="modalLRInput12" class="form-control form-control-sm validate" required>
                                 <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
                             </div>
 
                             <div class="md-form form-sm mb-5">
                                 <i class="fa fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
+                                <input type="password"  name="up44" id="modalLRInput13" class="form-control form-control-sm validate" required>
                                 <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
                             </div>
-
-                            <div class="md-form form-sm mb-4">
-                                <i class="fa fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                                <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
+														
+														<div class="md-form form-sm mb-5">
+                                <i class="fa fa-user prefix" ></i>
+                                <input type="text" name="up55" id="modalLRInput14" class="form-control form-control-sm validate" required>
+                                <label data-error="wrong" data-success="right" for="modalLRInput14">Gender</label>
+                            </div>
+														
+														<div class="md-form form-sm mb-5">
+                                <i class="fa fa-address-book prefix" ></i>
+                                <input type="text" name="up66" id="modalLRInput14" class="form-control form-control-sm validate" required>
+                                <label data-error="wrong" data-success="right" for="modalLRInput14">Address</label>
                             </div>
 
                             <div class="text-center form-sm mt-2">
-                                <button class="btn btn-info">Sign up <i class="fa fa-sign-in ml-1"></i></button>
+                                <button class="btn btn-info" name="signup_9">Sign up <i class="fa fa-sign-in ml-1"></i></button>
                             </div>
 
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-right">
-                                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                                <p class="pt-1">Already have an account? <a data-toggle="tab" href="#panel91" role="tab" class="blue-text">Log In</a></p>
                             </div>
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-                        </div>
+                        </div></form>
                     </div>
-                    <!--/.Panel 8-->
+                    <!--/.Panel 10-->
                 </div>
 
             </div>
@@ -560,6 +629,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
     </div>
 </div>
 <!--Modal: Login / Register Form-->
+<!--/.admin login-->
   
 <div class="modal fade" id="mss3" tabindex="-1" role="dialog" aria-labelledby="mss3" aria-hidden="true">
     <div class="modal-dialog cascading-modal " role="document">
@@ -572,10 +642,10 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tabs-2 blue-gradient" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#panel9" role="tab"><i class="fa fa-user mr-1"></i> Login</a>
+                        <a class="nav-link active" data-toggle="tab" href="#panel9" role="tab"><i class="fa fa-user mr-1"></i>User Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#panel10" role="tab"><i class="fa fa-user-plus mr-1"></i> Register</a>
+                        <a class="nav-link" data-toggle="tab" href="#panel10" role="tab"><i class="fa fa-user-plus mr-1"></i>User Register</a>
                     </li>
                 </ul>
 
@@ -687,7 +757,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
 
             <!--First column-->
             <div class="col-md-4">
-				<img class="img" src="img/1.png" width="180px" height="60px"><br><hr>
+				<img class="img" src="img/logo.png" width="250px" height="60px"><br><hr>
                 <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Online examination Portal</h5>
                 <p>This portal provides expertised certficiation courses for various programming languages in order to increase knowledge level.</p>
             </div>
@@ -792,6 +862,7 @@ if(!empty($_POST['in1']) && !empty($_POST['in2'])) {
          $(this).attr('scrollamount',5);
     });
 });
+
 </script>
 <?php
 if(isset($a)) { ?>
